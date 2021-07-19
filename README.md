@@ -48,3 +48,4 @@ In this example we run the following apps in turn with:
 This repository uses GitHub actions to automatically run this entire chain of analysis in the could.
 It is run each time an app is updated to ensure it does not break.
 You can view the analysis and output by clicking on the `Actions` tab at the top of the page.
+View the github workflow to see how each bosh command is run in turn.
