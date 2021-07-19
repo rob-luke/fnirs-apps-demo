@@ -1,0 +1,7 @@
+{
+    "input_datasets": "/home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/",
+    "task_label": [
+        "tapping"
+    ],
+    "duration": 5
+}
