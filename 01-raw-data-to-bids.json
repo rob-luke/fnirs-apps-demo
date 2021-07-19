@@ -1,5 +1,5 @@
 {
-    "input_datasets": "/home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/",
+    "input_datasets": "/bids_dataset",
     "task_label": [
         "tapping"
     ],
