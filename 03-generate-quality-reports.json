@@ -1,0 +1,5 @@
+{
+    "input_datasets": "/bids_dataset",
+    "pp_threshold": 0.6,
+    "sci_threshold": 0.7
+}
