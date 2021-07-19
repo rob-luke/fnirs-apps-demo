@@ -1,0 +1,4 @@
+{
+    "input_datasets": "/bids_dataset",
+    "threshold": 0.7
+}
