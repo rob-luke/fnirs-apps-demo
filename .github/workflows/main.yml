@@ -28,11 +28,20 @@ jobs:
           packages: |
             boutiques
   
-      - name: Set env
+      - name: Search
         run: bosh search fNIRS
   
+      - name: Search
+        run: bosh search 'fNIRS Apps Sourcedata to BIDS'
+  
+      - name: Search
+        run: bosh search 'fNIRS Apps Sourcedata to BIDS' | tail -n 1
+  
+      - name: Search
+        run: bosh search 'fNIRS Apps Sourcedata to BIDS' | tail -n 1 | cut -d " " -f1
+  
       - name: Set env
-        run: echo "GITHUB_SHA_SHORT=$(bosh search 'fNIRS Apps Sourcedata to BIDS' | tail -n 1 | cut -d " " -f1)" >> $GITHUB_ENV
+        run: echo "GITHUB_SHA_SHORT=`bosh search 'fNIRS Apps Sourcedata to BIDS' | tail -n 1 | cut -d " " -f1` >> $GITHUB_ENV
         
       - name: Test
         run: echo $GITHUB_SHA_SHORT          
