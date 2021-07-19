@@ -52,19 +52,19 @@ jobs:
       - name: Run convert to BIDS
         run: bosh exec launch zenodo.5112758 01-raw-data-to-bids.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
-      - name: Run convert to BIDS
+      - name: Compute scalp coupling index
         run: bosh exec launch zenodo.5112722 02-compute-sci.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
-      - name: Run convert to BIDS
+      - name: Generate quality reports
         run: bosh exec launch zenodo.5112773 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
-      - name: Run convert to BIDS
+      - name: Run GLM analysis
         run: bosh exec launch zenodo.5112808 04-run-glm-analysis.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - uses: actions/upload-artifact@v1
         name: Upload formatted BIDS dataset
         with:
-          name: Formatted_BIDS_Dataset
+          name: Dataset
           path: /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data
         
         
