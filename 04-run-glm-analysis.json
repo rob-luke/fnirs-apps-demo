@@ -1,0 +1,6 @@
+{
+    "input_datasets": "/bids_dataset",
+    "short_regression": "True",
+    "export_drifts": "False",
+    "export_shorts": "False"
+}
