@@ -1,16 +1,11 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -62,6 +57,9 @@ jobs:
         
       - name: Run convert to BIDS
         run: bosh exec launch zenodo.5112773 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        
+      - name: Run convert to BIDS
+        run: bosh exec launch zenodo.5112808 04-run-glm-analysis.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - uses: actions/upload-artifact@v1
         name: Upload formatted BIDS dataset
