@@ -3,5 +3,6 @@
     "task_label": [
         "tapping"
     ],
-    "duration": 5
+    "duration": 5,
+    "events": "{\"1\":\"Control\", \"2\":\"Audio/Noise\"}"
 }
