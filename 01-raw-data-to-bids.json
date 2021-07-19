@@ -1,8 +1,6 @@
 {
     "input_datasets": "/bids_dataset",
-    "task_label": [
-        "tapping"
-    ],
+    "task_label": "tapping",
     "duration": 5,
     "events": "{\"1\":\"Control\", \"2\":\"Tapping/Left\", \"3\":\"Tapping/Right\"}"
 }
