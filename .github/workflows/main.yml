@@ -63,6 +63,10 @@ jobs:
       - name: Run convert to BIDS
         run: bosh exec launch zenodo.5112773 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
-        
+      - uses: actions/upload-artifact@v1
+        name: Upload formatted BIDS dataset
+        with:
+          name: Formatted_BIDS_Dataset
+          path: /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data
         
         
