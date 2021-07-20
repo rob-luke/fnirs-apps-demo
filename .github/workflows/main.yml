@@ -38,16 +38,16 @@ jobs:
         run: echo $GITHUB_SHA_SHORT          
         
       - name: Run convert to BIDS
-        run: bosh exec launch zenodo.5113341 01-raw-data-to-bids.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        run: bosh exec launch zenodo.5115271 01-raw-data-to-bids.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Compute scalp coupling index
-        run: bosh exec launch zenodo.5112722 02-compute-sci.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        run: bosh exec launch zenodo.5115274 02-compute-sci.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Generate quality reports
-        run: bosh exec launch zenodo.5112773 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        run: bosh exec launch zenodo.5115277 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Run GLM analysis
-        run: bosh exec launch zenodo.5113225 04-run-glm-analysis.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        run: bosh exec launch zenodo.5115278 04-run-glm-analysis.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - uses: actions/upload-artifact@v1
         name: Upload formatted BIDS dataset
