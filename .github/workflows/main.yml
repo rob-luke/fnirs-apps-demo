@@ -44,7 +44,7 @@ jobs:
         run: bosh exec launch zenodo.5125039 02-compute-sci.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Generate quality reports
-        run: bosh exec launch zenodo.5115277 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        run: bosh exec launch zenodo.5168311 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Run GLM analysis
         run: bosh exec launch zenodo.5162082 04-run-glm-analysis.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
