@@ -1,0 +1,58 @@
+name: NIRx SNIRF
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - uses: actions/checkout@v2
+      
+      - name: Download test data
+        shell: bash -el {0}
+        run: |
+          curl -L https://github.com/rob-luke/example-bids-sourcedata-snirf-nirx/archive/main.zip --output data.zip
+          pwd
+          unzip data.zip -d ~/example_data
+          ls
+          
+      - uses: actions/setup-python@v1
+
+      - uses: BSFishy/pip-action@v1
+        with:
+          packages: |
+            boutiques
+
+      - name: Set env
+        run: echo "GITHUB_SHA_SHORT=$(bosh search 'fNIRS Apps Sourcedata to BIDS' | tail -n 1 | awk '{print $1;}')" >> $GITHUB_ENV
+
+      - name: Test
+        run: echo $GITHUB_SHA_SHORT          
+        
+      - name: Run convert to BIDS
+        run: bosh exec launch zenodo.5201557 01-raw-data-to-bids.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        
+      - name: Compute scalp coupling index
+        run: bosh exec launch zenodo.5171948 02-compute-sci.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        
+      - name: Generate quality reports
+        run: bosh exec launch zenodo.5168311 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        
+      - name: Run GLM analysis
+        run: bosh exec launch zenodo.5162082 04-run-glm-analysis.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        
+      - uses: actions/upload-artifact@v1
+        name: Upload formatted BIDS dataset
+        with:
+          name: Dataset
+          path: /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data
+        
+        
