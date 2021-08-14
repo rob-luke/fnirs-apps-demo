@@ -22,7 +22,9 @@ jobs:
           curl -L https://github.com/rob-luke/example-bids-sourcedata-snirf-nirx/archive/main.zip --output data.zip
           pwd
           unzip data.zip -d ~/example_data
+          mv ~/example_data/example-bids-sourcedata-snirf-nirx-main ~/example_data/BIDS-NIRS-Tapping-00-Raw-data
           ls
+          ls ~/example_data
           
       - uses: actions/setup-python@v1
 
