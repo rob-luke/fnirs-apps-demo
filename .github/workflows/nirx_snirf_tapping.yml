@@ -43,7 +43,7 @@ jobs:
         run: bosh exec launch zenodo.5201557 01-raw-data-to-bids.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Compute scalp coupling index
-        run: bosh exec launch zenodo.5171948 02-compute-sci.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        run: bosh exec launch zenodo.5205318 02-compute-sci.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Generate quality reports
         run: bosh exec launch zenodo.5168311 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
