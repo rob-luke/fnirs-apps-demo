@@ -40,13 +40,13 @@ jobs:
         run: echo $GITHUB_SHA_SHORT          
         
       - name: Run convert to BIDS
-        run: bosh exec launch zenodo.5885755 01-raw-data-to-bids.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        run: bosh exec launch zenodo.6342353 01-raw-data-to-bids.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Compute scalp coupling index
         run: bosh exec launch zenodo.5885964 02-compute-sci.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Generate quality reports
-        run: bosh exec launch zenodo.5885949 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
+        run: bosh exec launch zenodo.6342345 03-generate-quality-reports.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
         
       - name: Run GLM analysis
         run: bosh exec launch zenodo.5886927 04-run-glm-analysis.json --debug -v /home/runner/example_data/BIDS-NIRS-Tapping-00-Raw-data/:/bids_dataset
